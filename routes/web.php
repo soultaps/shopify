@@ -22,3 +22,9 @@ Route::get('/', function () {
 Route::resource("produits", ProduitController::class);
 
 Route::get("ajouter-produit", [MainController::class, "ajouterProduit"]);
+
+Route::get("update-produit/{produit}", [MainController::class, "updateProduit"]);
+
+Route::get("update-produit2/{id}", [MainController::class, "updateProduit2"]);
+
+Route::get("suppression-produit/{id}", [MainController::class, "supprimerProduit"]);
