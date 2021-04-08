@@ -15,7 +15,14 @@ class ProduitController extends Controller
     public function index()
     {
         $produits = Produit::all();
-        dd($produits);
+        dd($produits->all());
+        // $produits500 = Produit::where("prix", ">", 500)->where("designation", "Cahier")->get();
+        // $produit = Produit::findOrFail(20);
+        $premier = Produit::first();
+        dd($premier);
+        // dd($produit->designation);
+        // dd($produit);
+        // dd($produits500);
         return view("front-office.produits.index");
     }
 

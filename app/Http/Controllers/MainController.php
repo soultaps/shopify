@@ -28,4 +28,9 @@ class MainController extends Controller
 
         dd($produit);
     }
+
+    public function updateProduit()
+    {
+        
+    }
 }
