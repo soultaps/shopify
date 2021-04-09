@@ -22,7 +22,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "libelle" => $this->faker->unique()->realText(10),
+            "description" => $this->faker->text(200),
         ];
     }
 }
