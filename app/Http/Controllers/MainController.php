@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\User;
 use App\Models\Produit;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
@@ -83,5 +85,21 @@ class MainController extends Controller
         dd($category, $category->produits);
 
         // dd($produit->category);
+    }
+
+    public function commande()
+    {
+        // $user = User::create([
+        //     "name" => "Issa OUEDRAOGO",
+        //     "email" => "issa@gmail.com",
+        //     "password" => Hash::make("admin123"),
+        // ]);
+
+        $user = User::first();
+        $produit1 = Produit::first();
+        $produit2 = Produit::findOrFail(2);
+        // $user->produits()->attach($produit1);
+        $user->produits()->attach($produit2);
+        dd($user->produits);
     }
 }

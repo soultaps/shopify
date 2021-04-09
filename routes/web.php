@@ -32,3 +32,5 @@ Route::get("suppression-produit/{id}", [MainController::class, "supprimerProduit
 Route::get("create-category", [MainController::class, "createCategory"]);
 
 Route::get("get-produit/{produit}", [MainController::class, "getProduit"]);
+
+Route::get("commande", [MainController::class, "commande"]);

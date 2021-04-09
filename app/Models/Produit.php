@@ -14,4 +14,9 @@ class Produit extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function users()
+    {
+        return $this->belongstoMany(User::class);
+    }
 }

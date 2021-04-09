@@ -14,7 +14,7 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produits = Produit::all();
+        $produits = Produit::paginate(15);
         return view("front-office.produits.index", [
             "produits" => $produits
         ]);

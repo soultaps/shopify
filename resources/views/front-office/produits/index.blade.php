@@ -14,6 +14,7 @@
                         <th>Category</th>
                         <th>Prix</th>
                         <th>Description</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,10 +24,18 @@
                             <td>{{ $produit->category ? $produit->category->libelle : "Non catégorisé" }}</td>
                             <td>{{ $produit->prix }}</td>
                             <td>{{ $produit->description }}</td>
+                            <td>
+                            <a href="#" class="btn btn-primary btn-sm mr-2" >Modifier</a>
+                            <a href="#" class="btn btn-danger btn-sm" >Supprimer</a>
+                            </td>
                         </tr>
+        
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-5 text-center d-flex justify-content-center">
+            {{ $produits->links() }}
+            </div>
         </div>
     </div>
 </x-master-layout>
