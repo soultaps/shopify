@@ -22,8 +22,8 @@ class ProduitFactory extends Factory
     public function definition()
     {
         return [
-            "designation" => $this->faker->unique()->realText(200),
-            "description" => $this->faker->text(1000),
+            "designation" => $this->faker->unique()->realText(20),
+            "description" => $this->faker->text(50),
             "prix" => $this->faker->numberBetween(500, 1000000),
         ];
     }

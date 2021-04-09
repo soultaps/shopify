@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Produit;
 use Illuminate\Http\Request;
 
@@ -57,5 +58,30 @@ class MainController extends Controller
     {
         $result = Produit::destroy($id);
         dd($result);
+    }
+
+    public function createCategory()
+    {
+
+        $category = Category::create([
+            "libelle" => "Vetements",
+        ]);
+
+        $produit = Produit::create([
+            "category_id" => $category->id,
+            "designation" => "Pantalon",
+            "description" => "La description de Pantalon",
+            "prix" => 5000
+        ]);
+
+        dd($produit);
+    }
+
+    public function getProduit(Produit $produit)
+    {
+        $category = Category::first();
+        dd($category, $category->produits);
+
+        // dd($produit->category);
     }
 }
