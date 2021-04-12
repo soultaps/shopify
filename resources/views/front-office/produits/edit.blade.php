@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-4">
-            <h1 class="text-center">Ajouter un nouveau produit</h1>
+            <h1 class="text-center">Modifier un nouveau produit</h1>
             <hr/>
             </div>
         </div>

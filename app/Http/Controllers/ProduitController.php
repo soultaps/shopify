@@ -15,7 +15,7 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produits = Produit::paginate(15);
+        $produits = Produit::orderByDesc("id")->paginate(15);
         return view("front-office.produits.index", [
             "produits" => $produits
         ]);
@@ -42,7 +42,22 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $request->validate([
+            "designation" => "required|min:3|max:50|unique:produits",
+            "prix" => "required|numeric|between:500,1000000",
+            "description" => "required|max:200",
+            "category_id" => "required|numeric"
+        ]);
+
+        // dd($request->designation);
+        $produit = Produit::create([
+            "designation" => $request->designation,
+            "prix" => $request->prix,
+            "category_id" => $request->category_id,
+            "description" => $request->description,
+        ]);
+
+        return redirect()->route('produits.index')->with("statut", "Le produit a bien été ajouté !"); 
     }
 
     /**
