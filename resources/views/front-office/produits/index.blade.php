@@ -26,8 +26,8 @@
                                 <td>{{ $produit->prix }}</td>
                                 <td>{{ $produit->description }}</td>
                                 <td>
-                                <a href="#" class="btn btn-primary btn-sm mr-2" >Modifier</a>
-                                <a href="#" class="btn btn-danger btn-sm" >Supprimer</a>
+                                <a href="#" class="btn btn-primary btn-sm mr-2" ><i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn btn-danger btn-sm" ><i class="fas fa-trash    "></i></a>
                                 </td>
                             </tr>
             
