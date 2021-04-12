@@ -8,11 +8,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
-        <a class="navbar-brand" href="#">Shopify</a>
+        <a class="navbar-brand" href="{{ route('accueil') }}">Shopify</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation"></button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
@@ -21,7 +20,7 @@
                     <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Produits</a>
+                    <a class="nav-link" href="{{ route('produits.index') }}">Produits</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">A Propos</a>
@@ -34,13 +33,16 @@
         </div>
     </nav>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-            {{ $slot }}
-        </div>
-      </div>
+    <main>
+      {{ $slot }}
+    </main>
+
+    <div class="container-fluid bg-dark mt-5 pt-4 pb-4 d-flex justify-content-center">
+      <footer class="text-white">
+        © Copyright 2021 | Shopify | Tous droits réservés
+      </footer>
     </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
