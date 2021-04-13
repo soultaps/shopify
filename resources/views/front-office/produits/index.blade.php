@@ -17,7 +17,11 @@
                 </div>
                     
                 @endif
-
+                <div>
+                    <a class="btn btn-success btn-sm" href="{{ route('produits.create') }}">
+                        <i class="fas fa-plus"></i> Ajouter
+                    </a>
+                </div>
                 <table class="table">
                     <thead>
                         <tr>

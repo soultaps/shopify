@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProduitFormRequest;
 use App\Models\Produit;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -29,8 +30,10 @@ class ProduitController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $produit = new Produit;
         return view("front-office.produits.create", [ 
-            "categories" => $categories 
+            "categories" => $categories,
+            "produit" => $produit,
             ]);
     }
 
@@ -40,15 +43,8 @@ class ProduitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProduitFormRequest $request)
     {
-        $request->validate([
-            "designation" => "required|min:3|max:50|unique:produits",
-            "prix" => "required|numeric|between:500,1000000",
-            "description" => "required|max:200",
-            "category_id" => "required|numeric"
-        ]);
-
         // dd($request->designation);
         $produit = Produit::create([
             "designation" => $request->designation,
@@ -66,9 +62,9 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Produit $produit)
     {
-        //
+        dd($produit);
     }
 
     /**
@@ -93,14 +89,9 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProduitFormRequest $request, $id)
     {
-        $request->validate([
-            "designation" => "required|min:3|max:50",
-            "prix" => "required|numeric|between:500,1000000",
-            "description" => "required|max:200",
-            "category_id" => "required|numeric"
-        ]);
+
         Produit::where("id", $id)->update([
             "designation" => $request->designation,
             "prix" => $request->prix,
