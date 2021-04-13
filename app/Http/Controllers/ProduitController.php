@@ -77,9 +77,13 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Produit $produit)
     {
-        //
+        $categories = Category::all();
+        return view("front-office.produits.edit", [
+            "produit" => $produit,
+            "categories" => $categories,
+        ]);
     }
 
     /**
@@ -91,7 +95,20 @@ class ProduitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "designation" => "required|min:3|max:50",
+            "prix" => "required|numeric|between:500,1000000",
+            "description" => "required|max:200",
+            "category_id" => "required|numeric"
+        ]);
+        Produit::where("id", $id)->update([
+            "designation" => $request->designation,
+            "prix" => $request->prix,
+            "category_id" => $request->category_id,
+            "description" => $request->description,
+        ]);
+
+        return redirect()->route("produits.index")->with("statut", "Le produit a bien été modifié");
     }
 
     /**
@@ -102,6 +119,8 @@ class ProduitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Produit::destroy($id);
+
+        return redirect()->route('produits.index')->with("statut", "Le produit a bien été surpprimé");
     }
 }

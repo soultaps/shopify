@@ -17,10 +17,7 @@
                 </div>
                     
                 @endif
-                
-                <script>
-                  $(".alert").alert();
-                </script>
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -39,8 +36,15 @@
                                 <td>{{ $produit->prix }}</td>
                                 <td>{{ $produit->description }}</td>
                                 <td>
-                                <a href="#" class="btn btn-primary btn-sm mr-2" ><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger btn-sm" ><i class="fas fa-trash    "></i></a>
+                                <a href="{{ route('produits.edit', $produit) }}" class="btn btn-primary btn-sm mr-2" ><i class="fas fa-edit"></i></a>
+                                <a href="{{ route("produits.destroy", $produit->id) }}" class="btn btn-danger btn-sm"  onClick="
+                                    event.preventDefault(); 
+                                    if(confirm('Etes-vous sur de vouloir supprimer cet produit ?')) 
+                                    document.getElementById('{{ $produit->id }}').submit();" ><i class="fas fa-trash"></i></a>
+                                <form id="{{ $produit->id }}" method="post" action="{{ route("produits.destroy", $produit->id) }}">
+                                    @csrf
+                                    @method("delete")
+                                </form>
                                 </td>
                             </tr>
             
