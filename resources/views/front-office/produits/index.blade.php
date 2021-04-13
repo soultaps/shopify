@@ -22,6 +22,7 @@
                         <i class="fas fa-plus"></i> Ajouter
                     </a>
                 </div>
+                Le nom de l'image sélectionnée est : {{ session('imageName') }}
                 <table class="table">
                     <thead>
                         <tr>

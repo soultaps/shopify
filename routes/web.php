@@ -32,3 +32,5 @@ Route::get("create-category", [MainController::class, "createCategory"]);
 Route::get("get-produit/{produit}", [MainController::class, "getProduit"]);
 
 Route::get("commande", [MainController::class, "commande"]);
+
+Route::get("test-collection", [MainController::class, "collection"]);

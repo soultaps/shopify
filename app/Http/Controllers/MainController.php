@@ -110,4 +110,10 @@ class MainController extends Controller
         $user->produits()->attach($produit2);
         dd($user->produits);
     }
+
+    public function collection()
+    {
+        $collection1 = collect([]);
+        dd($collection1);
+    }
 }

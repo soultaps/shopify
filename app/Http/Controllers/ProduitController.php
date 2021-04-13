@@ -47,12 +47,13 @@ class ProduitController extends Controller
     {
         // dd($request->file("image")->getClientOriginalName());
         // dd($request->file("image"));
-        $imageName = "produit.png";
+        $imageName = null;
         if($request->file("image")){
             $imageName = time().$request->file("image")->getClientOriginalName();
             $request->file("image")->storeAs("uploads/produits", $imageName);
         }
-        
+        $request->session()->put("imageName", $imageName);
+
         // dd($request->designation);
         $produit = Produit::create([
             "designation" => $request->designation,
