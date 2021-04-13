@@ -17,7 +17,7 @@
   <label for="category_id">Catégorie</label>
   <select class="form-control" name="category_id" id="category_id">
     @foreach ($categories as $categorie)
-    <option {{ ($produit->category_id==$categorie->id) ? "selected" : "" }} value="{{ $categorie->id }}" > {{ $categorie->libelle }} </option>
+    <option {{ ($produit->category_id==$categorie->id OR old('category_id')==$categorie->id) ? "selected" : "" }} value="{{ $categorie->id }}" > {{ $categorie->libelle }} </option>
     @endforeach
   </select>
   @error("category_id")
@@ -32,4 +32,11 @@
   <small class="text-danger">{{ $message }}</small>
   @enderror
 </div>
+
+<div class="form-group">
+  <label for="">Image</label>
+  <input type="file" class="form-control-file" name="image" id="image" placeholder="" aria-describedby="fileHelpId">
+  <small id="fileHelpId" class="form-text text-muted">Help text</small>
+</div>
+
 <button type="submit" class="btn btn-primary btn-block btn-lg">Valider</button>

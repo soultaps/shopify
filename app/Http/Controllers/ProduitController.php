@@ -45,12 +45,21 @@ class ProduitController extends Controller
      */
     public function store(ProduitFormRequest $request)
     {
+        // dd($request->file("image")->getClientOriginalName());
+        // dd($request->file("image"));
+        $imageName = "produit.png";
+        if($request->file("image")){
+            $imageName = time().$request->file("image")->getClientOriginalName();
+            $request->file("image")->storeAs("uploads/produits", $imageName);
+        }
+        
         // dd($request->designation);
         $produit = Produit::create([
             "designation" => $request->designation,
             "prix" => $request->prix,
             "category_id" => $request->category_id,
             "description" => $request->description,
+            "image" => $imageName,
         ]);
 
         return redirect()->route('produits.index')->with("statut", "Le produit a bien été ajouté !"); 
