@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProduitFormRequest;
+use App\Models\User;
 use App\Models\Produit;
 use App\Models\Category;
+use App\Mail\ProduitAjoute;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ProduitFormRequest;
 
 class ProduitController extends Controller
 {
@@ -62,6 +65,10 @@ class ProduitController extends Controller
             "description" => $request->description,
             "image" => $imageName,
         ]);
+
+        $user = User::first();
+        if($user)
+        Mail::to($user)->send(new ProduitAjoute);
 
         return redirect()->route('produits.index')->with("statut", "Le produit a bien été ajouté !"); 
     }

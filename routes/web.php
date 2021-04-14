@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\MainController;
+use App\Mail\ProduitAjoute;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProduitController;
 
 /*
@@ -34,3 +35,7 @@ Route::get("get-produit/{produit}", [MainController::class, "getProduit"]);
 Route::get("commande", [MainController::class, "commande"]);
 
 Route::get("test-collection", [MainController::class, "collection"]);
+
+Route::get("test-mail", function(){
+    return new ProduitAjoute;
+});
