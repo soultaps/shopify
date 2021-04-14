@@ -22,7 +22,7 @@
                         <i class="fas fa-plus"></i> Ajouter
                     </a>
                 </div>
-                Le nom de l'image sélectionnée est : {{ session('imageName') }}
+                {{-- Le nom de l'image sélectionnée est : {{ session('imageName') }} --}}
                 <table class="table">
                     <thead>
                         <tr>
@@ -38,7 +38,7 @@
                             <tr>
                                 <td scope="row">{{ $produit->designation }}</td>
                                 <td>{{ $produit->category ? $produit->category->libelle : "Non catégorisé" }}</td>
-                                <td>{{ $produit->prix }}</td>
+                                <td>{{ formatPrixBf($produit->prix) }}</td>
                                 <td>{{ $produit->description }}</td>
                                 <td>
                                 <a href="{{ route('produits.edit', $produit) }}" class="btn btn-primary btn-sm mr-2" ><i class="fas fa-edit"></i></a>

@@ -113,7 +113,32 @@ class MainController extends Controller
 
     public function collection()
     {
-        $collection1 = collect([]);
-        dd($collection1);
+        $collection1 = collect([
+            [
+                "title" => "Mon Super livre 1",
+                "price" => 5000,
+                "description" => "La description du livre"
+            ],
+            [
+                "title" => "Mon Super livre 2",
+                "price" => 10000,
+                "description" => "La description du livre"
+            ],
+            [
+                "title" => "Mon Super livre 3",
+                "price" => 7000,
+                "description" => "La description du livre"
+            ],
+        ]);
+        $collection1->push([
+                "title" => "Mon Super livre 4",
+                "price" => 25000,
+                "description" => "La description du livre"
+            ]);
+        $nouvelleCollection = $collection1->filter(function($livre, $key){
+            return $livre["price"] >= 10000;
+        });
+
+        dd($nouvelleCollection);
     }
 }
