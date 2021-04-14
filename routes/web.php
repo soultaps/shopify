@@ -4,6 +4,7 @@ use App\Mail\ProduitAjoute;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProduitController;
+use App\Notifications\ModificationProduit;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,4 @@ Route::get("test-collection", [MainController::class, "collection"]);
 Route::get("test-mail", function(){
     return new ProduitAjoute;
 });
+

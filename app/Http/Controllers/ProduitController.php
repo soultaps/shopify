@@ -9,6 +9,7 @@ use App\Mail\ProduitAjoute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ProduitFormRequest;
+use App\Notifications\ModificationProduit;
 
 class ProduitController extends Controller
 {
@@ -67,6 +68,7 @@ class ProduitController extends Controller
         ]);
 
         $user = User::first();
+        
         if($user)
         Mail::to($user)->send(new ProduitAjoute);
 
@@ -115,6 +117,9 @@ class ProduitController extends Controller
             "category_id" => $request->category_id,
             "description" => $request->description,
         ]);
+
+        $user = User::first();
+        $user->notify(new ModificationProduit);
 
         return redirect()->route("produits.index")->with("statut", "Le produit a bien été modifié");
     }

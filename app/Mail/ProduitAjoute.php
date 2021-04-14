@@ -28,6 +28,6 @@ class ProduitAjoute extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.produits.produit-ajoute');
+        return $this->subject("Du nouveau sur Shopify")->markdown('emails.produits.produit-ajoute');
     }
 }
