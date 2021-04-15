@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    "testFormation" => "juste un test",
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
