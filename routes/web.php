@@ -15,10 +15,13 @@ use App\Http\Controllers\ProduitController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware(["isAdmin"])->group(function(){
-    Route::get('/', [MainController::class, "accueil"])->name('accueil');
+Route::get('/', [MainController::class, "accueil"])->name('accueil');
+
+Route::middleware(["auth", "isAdmin"])->prefix("admin")->group(function(){
     Route::resource("produits", ProduitController::class);
 });
+
+Route::get("list-produits", [ProduitController::class, "index"]);
 
 Route::get("ajouter-produit", [MainController::class, "ajouterProduit"]);
 

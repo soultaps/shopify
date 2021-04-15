@@ -56,4 +56,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function isAdmin()
+    {
+        if($this->role->profil=="admin" OR $this->role->profil=="root")
+            return true;
+        else
+            return false;
+    }
 }
