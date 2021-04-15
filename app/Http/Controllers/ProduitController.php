@@ -54,7 +54,7 @@ class ProduitController extends Controller
         $imageName = null;
         if($request->file("image")){
             $imageName = time().$request->file("image")->getClientOriginalName();
-            $request->file("image")->storeAs("uploads/produits", $imageName);
+            $request->file("image")->storeAs("public/uploads/produits", $imageName);
         }
         $request->session()->put("imageName", $imageName);
 
