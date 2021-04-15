@@ -4,6 +4,7 @@ use App\Mail\ProduitAjoute;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProduitController;
+use App\Notifications\ModificationProduit;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +41,3 @@ Route::get("test-mail", function(){
     return new ProduitAjoute;
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';

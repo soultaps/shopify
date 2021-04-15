@@ -27,10 +27,32 @@
                     <a class="nav-link" href="#">A Propos</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            {{-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> --}}
+            <ul class="nav justify-content-center navbar-nav">
+              @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">Inscription</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Connexion</a>
+                </li>
+              @else
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="{{ route('logout') }}" 
+                  onclick="event.preventDefault();
+                  document.getElementById('deconnexion').submit()" >Déconnexion</a>
+                  <form style="display: none" id="deconnexion" method="post" action="{{ route('logout') }}">
+                    @csrf
+                  </form>
+                </div>
+              </li>
+              @endguest
+            </ul>
         </div>
     </nav>
 
