@@ -17,9 +17,12 @@
                 </div>
                     
                 @endif
-                <div>
-                    <a class="btn btn-success btn-sm" href="{{ route('produits.create') }}">
+                <div class="d-flex">
+                    <a class="btn btn-success btn-sm mr-4" href="{{ route('produits.create') }}">
                         <i class="fas fa-plus"></i> Ajouter
+                    </a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('export') }}">
+                        <i class="fas fa-download"></i> Exporter
                     </a>
                 </div>
                 {{-- Le nom de l'image sélectionnée est : {{ session('imageName') }} --}}

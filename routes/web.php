@@ -19,7 +19,7 @@ Route::get('/', [MainController::class, "accueil"])->name('accueil');
 
 Route::middleware(["auth", "isAdmin"])->prefix("admin")->group(function(){
     Route::resource("produits", ProduitController::class);
-    Route::get("export-produits", [MainController::class, "exportProduits"]);
+    Route::get("export-produits", [MainController::class, "exportProduits"])->name("export");
 });
 
 Route::get("list-produits", [ProduitController::class, "index"]);
