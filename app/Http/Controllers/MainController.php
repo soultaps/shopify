@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\Produit;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Exports\ProduitsExport;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MainController extends Controller
 {
@@ -140,5 +142,10 @@ class MainController extends Controller
         });
 
         dd($nouvelleCollection);
+    }
+
+    public function exportProduits()
+    {
+        return Excel::download(new ProduitsExport, "produits.xlsx");
     }
 }
